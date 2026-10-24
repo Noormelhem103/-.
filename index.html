@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d5b46">
+<title>نورٌ لأمي | قرآن وأذكار</title>
+<style>
+:root{--green:#0d5b46;--green2:#174b3e;--gold:#d8b56d;--cream:#fbf8ef;--ink:#23352f;--muted:#6b7c74}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+header{background:linear-gradient(135deg,var(--green),#123b32);color:white;padding:26px 18px 24px;text-align:center;border-radius:0 0 28px 28px}
+header .mark{font-size:34px;color:var(--gold)}header h1{margin:2px 0;font-size:27px}header p{margin:3px 0;color:#e5eee8;font-size:14px}
+main{max-width:760px;margin:auto;padding:16px}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 16px}
+button,.tab{border:0;border-radius:14px;padding:12px 8px;font:inherit;cursor:pointer}
+.nav button{background:#e7eee8;color:var(--green);font-weight:bold}.nav button.active{background:var(--green);color:white}
+.panel{display:none}.panel.active{display:block}
+.card{background:white;border:1px solid #e8e5d9;border-radius:18px;padding:16px;margin:10px 0;box-shadow:0 4px 16px #173c2a0a}
+h2{font-size:21px;margin:4px 0 10px;color:var(--green)}h3{margin:0 0 6px;font-size:18px}
+.small{font-size:13px;color:var(--muted)}
+input,select{width:100%;padding:12px;border:1px solid #d9e0d9;border-radius:12px;font:inherit;background:#fff;margin:4px 0 10px}
+.primary{background:var(--green);color:white}.secondary{background:#e9f0eb;color:var(--green)}
+.ayah{font-size:22px;line-height:2.2;text-align:center;padding:16px 6px;color:#263c31}
+.adhkar{font-size:19px;line-height:2;text-align:center}.counter{font-size:52px;color:var(--green);text-align:center;font-weight:bold}
+.center{text-align:center}.gold{color:#a77b2d}.footer{text-align:center;padding:24px 12px;color:var(--muted);font-size:13px}
+a{color:var(--green)}.row{display:flex;gap:8px;flex-wrap:wrap}.row button{flex:1;min-width:120px}
+@media(min-width:600px){.nav{grid-template-columns:repeat(5,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="mark">۞</div><h1>نورٌ لأمي</h1><p>قرآن كريم • أذكار • أدعية</p><p class="small" style="color:#e5eee8">صدقة جارية عن روح المرحومة أورورا / فاطمة أديب عبد الحميد</p></header>
+<main>
+<div class="nav">
+<button class="active" data-tab="quran">القرآن الكريم</button>
+<button data-tab="adhkar">الأذكار</button>
+<button data-tab="tasbeeh">التسبيح</button>
+<button data-tab="dua">أدعية</button>
+<button data-tab="about">الإهداء</button>
+</div>
+<section id="quran" class="panel active">
+<div class="card"><h2>القرآن الكريم</h2><p class="small">اختاري سورة لقراءة آياتها. يتطلب تحميل نص القرآن اتصالًا بالإنترنت.</p>
+<select id="surahSelect" aria-label="اختيار السورة"><option>جارٍ تحميل السور...</option></select>
+<div class="row"><button class="primary" id="loadSurah">عرض السورة</button><button class="secondary" id="fontDown">تصغير الخط</button><button class="secondary" id="fontUp">تكبير الخط</button></div>
+<div id="quranStatus" class="small"></div><div id="quranText"></div>
+</div></section>
+<section id="adhkar" class="panel">
+<div class="card"><h2>أذكار الصباح والمساء</h2><p class="small">أذكار مختارة؛ يمكن إضافة بقية الأذكار بعد مراجعتها من مصادر موثوقة.</p>
+<div class="card"><h3>سبحان الله وبحمده</h3><div class="adhkar">سبحان الله وبحمده</div><p class="center small">مئة مرة</p></div>
+<div class="card"><h3>الاستغفار</h3><div class="adhkar">أستغفر الله وأتوب إليه</div><p class="center small">كرريها بقدر استطاعتك</p></div>
+<div class="card"><h3>ذكر عظيم</h3><div class="adhkar">لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير</div></div>
+<div class="card"><h3>عند النوم</h3><div class="adhkar">باسمك اللهم أموت وأحيا</div></div>
+</div></section>
+<section id="tasbeeh" class="panel">
+<div class="card center"><h2>السبحة الإلكترونية</h2><p id="count" class="counter">0</p><button class="primary" id="plus" style="width:100%;font-size:20px;padding:16px">سبّحي هنا</button><div class="row" style="margin-top:10px"><button class="secondary" id="reset">تصفير العدّاد</button><button class="secondary" id="minus">تراجع مرة</button></div><p class="small">العدّاد يعمل داخل هذه الصفحة؛ قد يُعاد للصفر عند إغلاقها.</p></div>
+</section>
+<section id="dua" class="panel">
+<div class="card"><h2>أدعية للوالدين والمتوفين</h2>
+<div class="card adhkar">اللهم اغفر لها وارحمها، وعافها واعفُ عنها، وأكرم نُزلها، ووسّع مُدخلها.</div>
+<div class="card adhkar">اللهم آنس وحشتها، ونوّر قبرها، واجعل قبرها روضةً من رياض الجنة.</div>
+<div class="card adhkar">اللهم اجعل ما يُقرأ ويُذكر من خلال هذا الموقع عملًا صالحًا نافعًا، وتقبّل الدعاء والصدقة، وارحم موتى المسلمين.</div>
+<div class="card adhkar">ربِّ ارحمهما كما ربياني صغيرًا.</div>
+<p class="small">الأدعية دعاءٌ عام، وليست جميعها نصوصًا مأثورة بلفظها.</p>
+</div></section>
+<section id="about" class="panel">
+<div class="card center"><div class="gold" style="font-size:32px">۞</div><h2>إهداء ومحبة</h2><p>هذا الموقع صدقة جارية نهدي أجرها إلى روح المرحومة</p><h3>أورورا / فاطمة أديب عبد الحميد</h3><p>اللهم ارحمها رحمةً تطمئن بها روحها، ونوّر قبرها، وارفع درجتها في المهديين، واجمعنا بها في جنات النعيم.</p><p class="small">نسأل الله أن ينفع بهذا العمل كل من قرأ آية أو ذكره سبحانه.</p></div>
+</section>
+<div class="footer">اللهم اجعله عملًا خالصًا لوجهك الكريم 🤍<br>يمكن مشاركة رابط الموقع بعد نشره.</div>
+</main>
+<script>
+const tabs=[...document.querySelectorAll('[data-tab]')];
+tabs.forEach(b=>b.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));}));
+let count=0;const countEl=document.getElementById('count');function showCount(){countEl.textContent=count}
+document.getElementById('plus').onclick=()=>{count++;showCount()};document.getElementById('reset').onclick=()=>{count=0;showCount()};document.getElementById('minus').onclick=()=>{count=Math.max(0,count-1);showCount()};
+let fontSize=22;function setFont(){document.querySelectorAll('.ayah').forEach(x=>x.style.fontSize=fontSize+'px')}
+document.getElementById('fontUp').onclick=()=>{fontSize=Math.min(36,fontSize+2);setFont()};document.getElementById('fontDown').onclick=()=>{fontSize=Math.max(16,fontSize-2);setFont()};
+const select=document.getElementById('surahSelect'),status=document.getElementById('quranStatus'),out=document.getElementById('quranText');
+async function getSurahs(){try{const r=await fetch('https://api.alquran.cloud/v1/surah');if(!r.ok)throw 0;const j=await r.json();select.innerHTML='';j.data.forEach(s=>{const o=document.createElement('option');o.value=s.number;o.textContent=s.number+' - '+s.name+' ('+s.englishName+')';select.appendChild(o)});status.textContent='اختاري السورة ثم اضغطي «عرض السورة».';}catch(e){select.innerHTML='<option>تعذر تحميل السور</option>';status.textContent='تحققي من اتصال الإنترنت ثم أعيدي تحميل الصفحة.'}}
+async function loadSurah(){const n=select.value;if(!n)return;status.textContent='جارٍ تحميل السورة...';out.innerHTML='';try{const r=await fetch('https://api.alquran.cloud/v1/surah/'+n);if(!r.ok)throw 0;const j=await r.json();const title=document.createElement('h3');title.className='center';title.textContent=j.data.name;out.appendChild(title);const div=document.createElement('div');div.className='ayah';j.data.ayahs.forEach(a=>{div.append(document.createTextNode(a.text+' ۞ '));});out.appendChild(div);setFont();status.textContent='نص القرآن محمّل من خدمة خارجية؛ يلزم الاتصال بالإنترنت.';}catch(e){status.textContent='تعذر تحميل السورة. تأكدي من الإنترنت وحاولي مرة أخرى.'}}
+document.getElementById('loadSurah').onclick=loadSurah;getSurahs();
+</script>
+</body>
+</html>
